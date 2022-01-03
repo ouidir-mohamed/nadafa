@@ -2,11 +2,15 @@ import { BehaviorSubject, delay, elementAt, startWith, Subject } from 'rxjs';
 const filteredCities = new BehaviorSubject<string[]>([]);
 const selectedCity = new BehaviorSubject<string>("");
 let data:string[]=[];
-for(let i=0;i<100;i++){
-    data.push("city "+i)
-  }
+// for(let i=0;i<100;i++){
+//     data.push("city "+i)
+//   }
 
-
+  const jsonData:Ville[]= require('./villes.json'); 
+   jsonData.forEach(element => {
+     data.push(element.nom);
+   });
+   
 
 
 export const citiesService = {
@@ -40,3 +44,9 @@ const filter = (query:String) => {
       filteredCities.next([]);
     }
   };
+
+
+
+  interface Ville{
+    nom:string
+  }

@@ -6,8 +6,9 @@ import { elementAt } from 'rxjs';
 import CityIcon  from '../../../assets/svg/city2.svg';
 import { citiesService } from '../../services/cities-service';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NavigationAction } from '@react-navigation/routers';
 
-const SelectCity = ( {navigation} ) => {
+const SelectCity = ( {navigation}:any ) => {
 
 
  const [filteredData, setFilteredData] = useState<string[]>([]);
@@ -84,8 +85,9 @@ const SelectCity = ( {navigation} ) => {
         </View>
   <View style={styles.buttonView}>
 <Pressable style={styles.button} onPress={()=>{
-   navigation.navigate('Home')
-   }}  android_ripple={{borderless:true}}>
+   navigation.navigate('Home',{ ville: selectedValue });
+   
+   }}  android_ripple={{borderless:true}} >
       <Text style={styles.buttonText}>Suivant</Text>
     </Pressable>
 
